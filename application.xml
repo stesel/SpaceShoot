@@ -37,7 +37,7 @@
     <fullScreen>true</fullScreen>
     <!--<autoOrients>false</autoOrients>-->
     <!--<aspectRatio>landscape</aspectRatio>-->
-    <renderMode>gpu</renderMode>
+    <renderMode>direct</renderMode>
     <systemChrome>standard</systemChrome>
     <aspectRatio>landscape</aspectRatio>
   </initialWindow>

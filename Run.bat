@@ -3,9 +3,12 @@ set PAUSE_ERRORS=1
 call bat\SetupSDK.bat
 call bat\SetupApplication.bat
 
+set OPTIONS=-connect %DEBUG_IP%
+:: Debugging using a custom IP
+::set DEBUG_IP=xxx.xxx.xxx.xxx
 :target
-goto desktop
-::goto android-debug
+::goto desktop
+goto android-debug
 ::goto android-test
 set INTERPRETER=-interpreter
 ::goto ios-debug

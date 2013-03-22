@@ -9,7 +9,7 @@
     <movie width="480" />
     <movie height="762" />
     <movie version="3" />
-    <movie minorVersion="0" />
+    <movie minorVersion="1" />
     <movie platform="AIR Mobile" />
     <movie background="#FFFFFF" />
   </output>
@@ -40,7 +40,7 @@
     <option linkReport="" />
     <option loadExterns="" />
     <option staticLinkRSL="True" />
-    <option additional="-swf-version=13 -target-player=11.1 -static-link-runtime-shared-libraries=true +configname=air " />
+    <option additional="-swf-version=13 -target-player=11.3 -static-link-runtime-shared-libraries=true +configname=air" />
     <option compilerConstants="" />
     <option minorVersion="" />
   </build>

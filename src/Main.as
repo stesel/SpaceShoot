@@ -228,9 +228,9 @@ package
 			///////////
 			initGUI();
 			
-			//var stage3DAvability:Boolean = ApplicationDomain.currentDomain.hasDefinition("flash.display.Stage3D");
-			//if (!stage3DAvability)
-				//scoreText.text = "Stage3D isn't available!";
+			var stage3DAvability:Boolean = ApplicationDomain.currentDomain.hasDefinition("flash.display.Stage3D");
+			if (!stage3DAvability)
+				scoreText.text = "Stage3D isn't available!";
 			
 			
 			stage.stage3Ds[0].addEventListener(Event.CONTEXT3D_CREATE, onContext3DCreate);
@@ -263,8 +263,8 @@ package
 		{
 			//addChild(hud);
 			control = new ControlPad();
-			control.x = control.width / 1.4;
-			control.y = stage.stageWidth - control.height / 1.4;
+			control.x = control.width;
+			control.y = control.height;
 			addChild(control);
 			
 			fireButton = new FireButton();
@@ -395,7 +395,7 @@ package
 			playerContainer.y = 10;
 			playerContainer.z = 0;
 			
-			player = new Stage3DEntity(shipObjData, context3D, shaderProgram1, playerTexture, 0.6, false, true);
+			player = new Stage3DEntity(shipObjData, context3D, shaderProgram1, playerTexture, 1, false, true);
 			player.follow(playerContainer);
 			//player.rotationDegreesX = -90;
 			//player.y = 10;
@@ -438,15 +438,16 @@ package
 			asteroid4.y = -500;
 			props.push(asteroid4);
 			
-			engineGlow = new Stage3DEntity(puffObjData, context3D, shaderProgram1, puffTexture, 1, false, true);
+			engineGlow = new Stage3DEntity(shipObjData, context3D, shaderProgram1, playerTexture, 0.5, false, true);
 			
 			engineGlow.follow(playerContainer);
-			engineGlow.blendScr = Context3DBlendFactor.ONE;
-			engineGlow.blendDst = Context3DBlendFactor.ONE;
+			//engineGlow.blendScr = Context3DBlendFactor.ONE;
+			//engineGlow.blendDst = Context3DBlendFactor.ONE;
 			engineGlow.depthTest = false;
-			engineGlow.cullingMode = Context3DTriangleFace.NONE;
-			engineGlow.y = -2.1;
-			engineGlow.rotationDegreesX = 90;
+			engineGlow.depthTestMode = Context3DCompareMode.ALWAYS;
+			engineGlow.cullingMode = Context3DTriangleFace.FRONT;
+			//engineGlow.y = -2.1;
+			//engineGlow.rotationDegreesX = 90;
 			particles.push(engineGlow);
 			
 			sky = new Stage3DEntity(skyObjData, context3D, shaderProgram1, skyTexture, 1, false, true);
@@ -643,8 +644,8 @@ package
 			asteroid3.rotationDegreesX += asteroidRotationSpeed * frameMS;
 			asteroid4.rotationDegreesX -= asteroidRotationSpeed * frameMS;
 			
-			engineGlow.rotationDegreesY -= 10 * frameMS;
-			engineGlow.scaleXYZ = Math.cos(gameTimer.gameElapsedTime / 66) / 20 + 0.5;
+			//engineGlow.rotationDegreesY -= 10 * frameMS;
+			//engineGlow.scaleXYZ = Math.cos(gameTimer.gameElapsedTime / 66) / 20 + 0.5;
 			
 			sky.x = playerContainer.x;
 			sky.y = playerContainer.y;
